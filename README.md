@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Stories
+# 1. User can view books in library
+   
+Scenario: As a User
+I want to see the books present in the library
+So that I can chose which book to borrow
+Given, there are no books in the library
+When, I view the books in the library
+Then, I see an empty library
+Given, there are books in the library
+When, I view the books in the library
+Then, I see the list of books in the library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 2. User can borrow a book from the library
 
-## Available Scripts
+Given, there are books in the library
+When, I choose a book to add to my borrowed list
+Then, the book is added to my borrowed list
+And, the book is removed from the library
+Note:
+a. Each User has a borrowing limit of 2 books at any point of time
 
-In the project directory, you can run:
+# 3. User can borrow a copy of a book from the library
 
-### `npm start`
+Given, there are more than one copy of a book in the library
+When, I choose a book to add to my borrowed list
+Then, one copy of the book is added to my borrowed list
+And, the library has at least one copy of the book left
+Given, there is only one copy of a book in the library
+When, I choose a book to add to my borrowed list
+Then, one copy of the book is added to my borrowed list
+And, the book is removed from the library
+Note:
+a. Only 1 copy of a book can be borrowed by a User at any point of time
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# 4. User can return books to the library
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Given, I have 2 books in my borrowed list
+When, I return one book to the library
+Then, the book is removed from my borrowed list
+And, the library reflects the updated stock of the book
+Given, I have 2 books in my borrowed list
+When, I return both books to the library
+Then, my borrowed list is empty
+And, the library reflects the updated stock of the books
